@@ -14,6 +14,8 @@ new_line:	db 10, 0
 new_space:  db " ", 0
 
 msg_banner:	db "ROM Fonts Checker by Rafael Diniz",10,0
+msg_vgain:	db "Entering GFX Mode",10,0
+msg_vgaout:	db "Leaving GFX Mode",10,0
 
 
 section .text                   ;section declaration
@@ -159,6 +161,11 @@ _main:
     mov di, msg_banner
     call prints
 
+    mov di,msg_vgain
+    call prints
+
+    mov ax,0x12                 ;  640x480
+    int 0x10
 
     push es
     push bp
@@ -248,6 +255,13 @@ _main:
     pop     es
 
     call print_info
+
+    mov di,msg_vgaout
+    call prints
+
+    mov ax,0x3                 ;  text mode 80x25
+    int 0x10
+
 
 exit:
     mov     bx,0
