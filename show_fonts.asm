@@ -167,99 +167,45 @@ _main:
     mov ax,0x12                 ;  640x480
     int 0x10
 
-    push es
-    push bp
-
     mov     ax,0x1130               ; function to address the charactor tables
     mov     bh,0x02                 ;  get addr of ROM 8x14 font
     int     0x10
-
-    pop bp
-    pop es
-
     call print_info
-
-
-    push es
-    push bp
 
     mov     ax,0x1130               ; function to address the charactor tables
     mov     bh,0x03                 ;  get addr of ROM 8x8 font
     int     0x10
-
-    pop bp
-    pop es
-
     call print_info
-
-
-    push es
-    push bp
 
     mov     ax,0x1130               ; function to address the charactor tables
     mov     bh,0x04                 ;  get addr of ROM 8x8 font (2nd half)
     int     0x10
-
-    pop bp
-    pop es
-
     call print_info
-
-    push es
-    push bp
 
     mov     ax,0x1130               ; function to address the charactor tables
     mov     bh,0x05                 ;  get addr of ROM 9x14 alternate font
     int     0x10
-
-    pop bp
-    pop es
-
     call print_info
-
-
-    push es
-    push bp
 
     mov     ax,0x1130               ; function to address the charactor tables
     mov     bh,0x06                 ;  get addr of ROM 8x16 font (VGA)
     int     0x10
-
-    pop bp
-    pop es
-
     call print_info
-
-
-    push    es
-    push    bp
 
     mov     ax,0x1130               ; function to address the charactor tables
     mov     bh,0x07                 ;  get addr of ROM 8x16 alternate font (VGA)
     int     0x10
-
-    pop bp
-    pop es
-
     call print_info
-
-
-    push    es
-    push    bp
 
     mov     ax,0x1130               ; function to address the charactor tables
     mov     bh,0x08                 ; wrong function (to see what happens)
     int     0x10
-
-    pop     bp
-    pop     es
-
     call print_info
 
     mov di,msg_vgaout
     call prints
 
-    mov ax,0x3                 ;  text mode 80x25
+    mov ax,0x3                 ;  text mode
     int 0x10
 
 
