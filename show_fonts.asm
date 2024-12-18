@@ -256,12 +256,28 @@ exit:
 
 print_info:
     push    dx
+    push    cx
+    push    bp
+
+    mov     ax,es
+    call    printnum
+    call    printspc
+
+    pop bp
+
+    mov     ax,bp
+    call    printnum
+    call    printspc
+
+    pop cx
+
     mov     ax,cx
     call    printnum
     call    printspc
+
     pop     dx
-    mov     al,dl
-    and     ax,0xff
+    mov     dh, 0
+    mov     ax,dx
     call    printnum
     call    printnl
     ret
